@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/bootstrap-icons/bootstrap-icons.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
+    <script src="{{asset('assets/vendors/jquery/jquery.min.js')}}"></script>
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.svg')}}" type="image/x-icon">
 </head>
 
@@ -42,6 +43,13 @@
         let table1 = document.querySelector('#table1');
         let dataTable = new simpleDatatables.DataTable(table1);
     </script>
-</body>
+    <script>
+            $("body").ready(function(){
+        setTimeout(function(){
+        $("div.alert").remove();
+        }, 3000 ); // 3 secs
 
+    });
+    </script>
+</body>
 </html>

@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\DistrictController;
 
 /*
@@ -16,8 +19,20 @@ use App\Http\Controllers\DistrictController;
 */
 
 Route::get('/', function () {
-    return view('pages.deshboard');
+    return redirect()->route('login');
 });
 
-Route::resource('users',UserController::class);
+
+
+Auth::routes();
+
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('users', UserController::class);
+    Route::resource('roles', RoleController::class);
+    Route::resource('permissions', PermissionController::class);
+});
+
 Route::resource('districts',DistrictController::class);

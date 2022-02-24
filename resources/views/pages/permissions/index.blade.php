@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title')
-Districts
+Permissions
 @endsection
 @section('content')
 
 <section class="section">
                     <div class="card">
                         <div class="card-header">
-                        <h3 class="mt-0 header-title"><a href="{{route('districts.create')}}" class="btn btn-primary">Create New</a></h3>
+                        <h3 class="mt-0 header-title"><a href="{{route('permissions.create')}}" class="btn btn-primary">Create New</a></h3>
                         </div>
 
                         @if ($message = Session::get('success'))
@@ -24,31 +24,22 @@ Districts
                                     <tr>
                                         <th>SL.</th>
                                         <th>Name</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($districts as $district )
+                                    @foreach ($permissions as $permission )
                                     <tr>
                                         <td>{{ ++$i }}</td>
-                                        <td>{{ $district->name }}</td>
-                                      
+                                        <td>{{ $permission->name }}</td>
+                                  
                                         <td>
-                                            @if ($district->status == 1)
-                                            <span class="badge bg-success">Enable</span>
-                                            @elseif($district->status == 0)
-                                            <span class="badge bg-danger">Disable</span>
-                                            @endif
-                                           
-                                        </td>
-                                        <td>
-                                            <form class="my-2" action="{{ route('districts.destroy',$district->id) }}" method="POST">
+                                            <form class="my-2" action="{{ route('permissions.destroy',$permission->id) }}" method="POST">
                                             
-                                                  <a class="btn btn-success" href="{{ route('districts.show',$district->id) }}">Show</a>
+                                                  <a class="btn btn-success" href="{{ route('permissions.show',$permission->id) }}">Show</a>
                                             
                                               
-                                                  <a class="btn btn-primary" href="{{route('districts.edit',$district->id)}}">Edit</a>
+                                                  <a class="btn btn-primary" href="{{route('permissions.edit',$permission->id)}}">Edit</a>
                                             
                                                   @csrf
                                                   @method('DELETE')

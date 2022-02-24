@@ -14,7 +14,10 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        return view('pages.districts.index');
+        $districts=District::latest()->get();
+        
+        return view('pages.districts.index',compact('districts'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -35,7 +38,19 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $request->validate([
+            'name'=> 'required',
+            'status'=> 'required', 
+           
+        ]);
+
+        $input = $request->all();   
+
+        District::create($input);
+     
+         return redirect()->route('districts.index')
+                        ->with('success','District created successfully.');
     }
 
     /**
@@ -55,9 +70,10 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(District $district)
     {
-        return view('pages.districts.edit');
+
+        return view('pages.districts.edit',compact('district'));
     }
 
     /**
@@ -67,9 +83,17 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, District $district)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+            'status' => 'required',
+        ]);
+    
+        $district->update($request->all());
+    
+        return redirect()->route('districts.index')
+                        ->with('success','District updated successfully');
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Create Users
+Create District
 @endsection
 @section('content')
 
@@ -9,22 +9,33 @@ Create Users
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title"><a href="" class="btn btn-primary">Back</a></h4>
+                                    <h4 class="card-title"><a href="{{ route('districts.index') }}" class="btn btn-primary">Back</a></h4>
                                 </div>
+
+                                @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <strong>Opps!</strong> Something went wrong, please check below errors.<br><br>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif 
+
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-vertical" action="{{ route('users.store') }}" method="post">
+                                        <form class="form form-vertical" action="{{ route('districts.store') }}" method="post">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row ps-3">
-                                                <h5>Personal Information</h5>
                                                     <div class="col-12">
                                                         <div class="form-group has-icon-left">
                                                             <label for="name">Name</label>
                                                             <div class="position-relative">
-                                                                <input type="text" class="form-control" placeholder="Full Name"  name="name" id="name">
+                                                                <input type="text" class="form-control" placeholder="Name" value="{{ old('name') }}" name="name" id="name">
                                                                 <div class="form-control-icon">
-                                                                    <i class="bi bi-person"></i>
+                                                                    <i class="bi bi-map"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -37,7 +48,7 @@ Create Users
                                                         <div class="form-group has-icon-left">
                                                             <!-- <label for="status">Status</label> -->
                                                             <div class="position-relative">
-                                                                <input type="hidden" class="form-control" placeholder="status" name="status" id="status" value=1>
+                                                                <input type="hidden" class="form-control" name="status" id="status" value=1>
                                                                 <div class="form-control-icon">
                                                                     <!-- <i class="bi bi-card"></i> -->
                                                                 </div>

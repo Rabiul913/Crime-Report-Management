@@ -9,8 +9,20 @@ Create Users
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title"><a href="" class="btn btn-primary">Back</a></h4>
+                                    <h4 class="card-title"><a href="{{ route('users.index') }}" class="btn btn-primary">Back</a></h4>
                                 </div>
+
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                        <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
                                 <div class="card-content">
                                     <div class="card-body">
                                         <form class="form form-vertical" action="{{ route('users.store') }}" method="post">
@@ -45,7 +57,7 @@ Create Users
                                                         <div class="form-group has-icon-left">
                                                             <label for="mobile-id-icon">Mobile</label>
                                                             <div class="position-relative">
-                                                                <input type="text" class="form-control" placeholder="Mobile" id="mobile-id-icon">
+                                                                <input type="text" class="form-control" placeholder="Mobile" name="mobile" id="mobile-id-icon">
                                                                 <div class="form-control-icon">
                                                                     <i class="bi bi-phone"></i>
                                                                 </div>
@@ -74,8 +86,8 @@ Create Users
                                                                                     <div class="position-relative">
                                                                                         <select class="form-control" name="pre_district" id="">
                                                                                             <option value="">Choose your district...</option>
-                                                                                            <option value="">Dhaka</option>
-                                                                                            <option value="">Chittagong</option>
+                                                                                            <option value="Dhaka">Dhaka</option>
+                                                                                            <option value="Chittagong">Chittagong</option>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -84,10 +96,10 @@ Create Users
                                                                                 <div class="form-group has-icon-left">
                                                                                     <label>Police Station</label>
                                                                                     <div class="position-relative">
-                                                                                        <select class="form-control" name="ps_id" id="">
+                                                                                        <select class="form-control" name="ps_name" id="">
                                                                                             <option value="">Choose police station...</option>
-                                                                                            <option value="">Tajgaon</option>
-                                                                                            <option value="">Banani</option>
+                                                                                            <option value="Tajgaon">Tajgaon</option>
+                                                                                            <option value="Banani">Banani</option>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -95,9 +107,10 @@ Create Users
                                                                         
                                                                             <div class="col-12">
                                                                                 <div class="form-group has-icon-left">
-                                                                                    <label for="mobile-id-icon">Postal Code</label>
+                                                                                    <label>Postal Code</label>
                                                                                     <div class="position-relative">
-                                                                                        <input type="number" class="form-control" name='postal_code'>
+
+                                                                                        <input type="number" class="form-control" name='pre_postal_code'>
                                                                                         <div class="form-control-icon">
                                                                                             <i class="bi bi-code"></i>
                                                                                         </div>
@@ -108,7 +121,7 @@ Create Users
                                                                                 <div class="form-group has-icon-left">
                                                                                     <label>Address:</label>
                                                                                     <div class="position-relative">
-                                                                                        <input type="text" class="form-control" placeholder="Present Address">
+                                                                                        <input type="text" class="form-control" name="pre_address" placeholder="Care of">
                                                                                         <div class="form-control-icon">
                                                                                             <i class="bi bi-map"></i>
                                                                                         </div>
@@ -128,8 +141,8 @@ Create Users
                                                                                     <div class="position-relative">
                                                                                         <select class="form-control" name="per_district" id="">
                                                                                             <option value="">Choose your district...</option>
-                                                                                            <option value="">Dhaka</option>
-                                                                                            <option value="">Chittagong</option>
+                                                                                            <option value="Dhaka">Dhaka</option>
+                                                                                            <option value="Chittagong">Chittagong</option>
                                                                                         </select>
                                                                                         <!-- <input type="text" class="form-control" placeholder="District" name="district">
                                                                                         <div class="form-control-icon">
@@ -142,10 +155,10 @@ Create Users
                                                                                 <div class="form-group has-icon-left">
                                                                                     <label>Police Station</label>
                                                                                     <div class="position-relative">
-                                                                                    <select class="form-control" name="per_police_station" id="">
+                                                                                    <select class="form-control" name="per_ps_name" id="">
                                                                                         <option value="">Choose police station...</option>
-                                                                                        <option value="">Tajgaon</option>
-                                                                                        <option value="">Banani</option>
+                                                                                        <option value="Tajgaon">Tajgaon</option>
+                                                                                        <option value="Banani">Banani</option>
                                                                                     </select>
                                                                                     </div>
                                                                                 </div>
@@ -155,7 +168,7 @@ Create Users
                                                                                 <div class="form-group has-icon-left">
                                                                                     <label for="mobile-id-icon">Postal Code</label>
                                                                                     <div class="position-relative">
-                                                                                        <input type="number" class="form-control" name='postal_code'>
+                                                                                        <input type="number" class="form-control" name='per_postal_code'>
                                                                                         <div class="form-control-icon">
                                                                                             <i class="bi bi-code"></i>
                                                                                         </div>
@@ -166,7 +179,7 @@ Create Users
                                                                                 <div class="form-group has-icon-left">
                                                                                     <label >Address:</label>
                                                                                     <div class="position-relative">
-                                                                                        <input type="text" class="form-control" placeholder="Permanent Address" name="address">
+                                                                                        <input type="text" class="form-control" name="per_address" placeholder="Care of" name="address">
                                                                                         <div class="form-control-icon">
                                                                                             <i class="bi bi-map"></i>
                                                                                         </div>
@@ -181,9 +194,53 @@ Create Users
                                                         <div class="form-group has-icon-left">
                                                             <!-- <label for="status">Status</label> -->
                                                             <div class="position-relative">
-                                                                <input type="hidden" class="form-control" placeholder="status" name="status" id="status">
+                                                                <input type="hidden" class="form-control" placeholder="status" value="1" name="status" id="status">
                                                                 <div class="form-control-icon">
-                                                                    <!-- <i class="bi bi-card"></i> -->
+                                                                    <i class="bi bi-card"></i> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                                                                            </div>
+                                                        @if ($role_name!="User")
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="status">Roles</label> 
+                                                                <div class="position-relative">
+                                                                    <select name="roles[]" id="roles[]" class="form-control" multiple="multiple">
+                                                                        @foreach ($roles as $key => $role)
+                                                                            <option value="{{ $key }}"> {{ $role }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    @if ($errors->has('roles')) <p class="help-block">{{ $errors->first('roles') }}</p> @endif
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @else
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="status">Roles</label> 
+                                                                <div class="position-relative">
+                                                                    <select name="roles[]" id="roles[]" class="form-control" multiple="multiple">
+                                                                        @foreach ($roles as $key => $role)
+                                                                            <option @if($role == "User") selected="true" @endif value="{{ $key }}"> {{ $role }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    @if ($errors->has('roles')) <p class="help-block">{{ $errors->first('roles') }}</p> @endif
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @endif
+                                        
+
+                                                    <div class="col-12">
+                                                        <div class="form-group has-icon-left">
+                                                            <label for="password-id-icon">Password</label>
+                                                            <div class="position-relative">
+                                                                <input class="form-control"  id="password" type="password" value="" name="password">
+                                                                {{-- <input type="password" class="form-control" placeholder="Password" name="password"> --}}
+                                                                <div class="form-control-icon">
+                                                                    <i class="bi bi-lock"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -191,20 +248,10 @@ Create Users
 
                                                     <div class="col-12">
                                                         <div class="form-group has-icon-left">
-                                                            <label for="password-id-icon">Password</label>
-                                                            <div class="position-relative">
-                                                                <input type="password" class="form-control" placeholder="Password" name="password">
-                                                                <div class="form-control-icon">
-                                                                    <i class="bi bi-lock"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group has-icon-left">
                                                             <label>Retype Password</label>
                                                             <div class="position-relative">
-                                                                <input type="password" class="form-control" placeholder="Retype Password" name="retype-password">
+                                                                <input class="form-control"  type="password" value="" name="confirm-password">
+                                                                {{-- <input type="password" class="form-control" placeholder="Retype Password" name="confirm-password"> --}}
                                                                 <div class="form-control-icon">
                                                                     <i class="bi bi-lock"></i>
                                                                 </div>
