@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Designation;
 use Illuminate\Http\Request;
-use App\Models\District;
 
-class DistrictController extends Controller
+class DesignationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,10 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        $districts=District::latest()->get();
         
-        return view('pages.districts.index',compact('districts'))
+        $designations=Designation::latest()->get();
+        
+        return view('pages.designations.index',compact('designations'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -27,7 +28,7 @@ class DistrictController extends Controller
      */
     public function create()
     {
-        return view('pages.districts.create');
+        return view('pages.designations.create');
     }
 
     /**
@@ -38,7 +39,6 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $request->validate([
             'name'=> 'required',
             'status'=> 'required', 
@@ -47,19 +47,19 @@ class DistrictController extends Controller
 
         $input = $request->all();   
 
-        District::create($input);
+        Designation::create($input);
      
-         return redirect()->route('districts.index')
-                        ->with('success','District created successfully.');
+         return redirect()->route('designations.index')
+                        ->with('success','Designation created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Designation $designation)
     {
         //
     }
@@ -67,46 +67,45 @@ class DistrictController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function edit(District $district)
+    public function edit(Designation $designation)
     {
-
-        return view('pages.districts.edit',compact('district'));
+        return view('pages.designations.edit',compact('designation'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, District $district)
+    public function update(Request $request, Designation $designation)
     {
         request()->validate([
             'name' => 'required',
             'status' => 'required',
         ]);
     
-        $district->update($request->all());
+        $designation->update($request->all());
     
-        return redirect()->route('districts.index')
-                        ->with('success','District updated successfully');
+        return redirect()->route('designations.index')
+                        ->with('success','Designation updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(District $district)
+    public function destroy(Designation $designation)
     {
-        $district->delete();
+        $designation->delete();
     
-        return redirect()->route('$districts.index')
-                        ->with('success','District deleted successfully');
+        return redirect()->route('designations.index')
+                        ->with('success','Designation deleted successfully');
     }
 }

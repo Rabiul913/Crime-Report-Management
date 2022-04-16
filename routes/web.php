@@ -6,6 +6,11 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\PoliceStationController;
+use App\Http\Controllers\ComplaintTypeController;
+use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\InvestigationController;
+use App\Http\Controllers\AttestorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +41,11 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 Route::resource('districts',DistrictController::class);
+Route::resource('police_stations',PoliceStationController::class);
+Route::resource('complaint_types',ComplaintTypeController::class);
+Route::resource('complaints',ComplaintController::class);
+Route::resource('investigations',InvestigationController::class);
+Route::resource('attestors',AttestorController::class);
+
+Route::get('getpolicestations',[UserController::class, 'getPolicestations']);
+Route::get('getcomplaintpolicestations',[ComplaintController::class, 'getPolicestations']);

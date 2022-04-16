@@ -84,22 +84,24 @@ Create Users
                                                                                 <div class="form-group has-icon-left">
                                                                                     <label>District</label>
                                                                                     <div class="position-relative">
-                                                                                        <select class="form-control" name="pre_district" id="">
+                                                                                        <select class="form-control" name="pre_district" id="pre_district">
                                                                                             <option value="">Choose your district...</option>
-                                                                                            <option value="Dhaka">Dhaka</option>
-                                                                                            <option value="Chittagong">Chittagong</option>
+                                                                                            @foreach($districts as $district)
+                                                                                            <option value="{{$district->id}}">{{$district->name}}</option>
+                                                                                            @endforeach
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+
                                                                             <div class="col-12">
-                                                                                <div class="form-group has-icon-left">
+                                                                                <div class="form-group has-icon-left" id="section_ps">
                                                                                     <label>Police Station</label>
                                                                                     <div class="position-relative">
-                                                                                        <select class="form-control" name="ps_name" id="">
+                                                                                        <select class="form-control" name="ps_name" id="ps_name">
                                                                                             <option value="">Choose police station...</option>
-                                                                                            <option value="Tajgaon">Tajgaon</option>
-                                                                                            <option value="Banani">Banani</option>
+                                                                                            {{-- <option value="Tajgaon">Tajgaon</option>
+                                                                                            <option value="Banani">Banani</option> --}}
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -139,10 +141,11 @@ Create Users
                                                                                     <label>District</label>
                                                                                    
                                                                                     <div class="position-relative">
-                                                                                        <select class="form-control" name="per_district" id="">
+                                                                                        <select class="form-control" name="per_district" id="per_district">
                                                                                             <option value="">Choose your district...</option>
-                                                                                            <option value="Dhaka">Dhaka</option>
-                                                                                            <option value="Chittagong">Chittagong</option>
+                                                                                            @foreach($districts as $district)
+                                                                                            <option value="{{$district->id}}">{{$district->name}}</option>
+                                                                                            @endforeach
                                                                                         </select>
                                                                                         <!-- <input type="text" class="form-control" placeholder="District" name="district">
                                                                                         <div class="form-control-icon">
@@ -152,13 +155,13 @@ Create Users
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-12">
-                                                                                <div class="form-group has-icon-left">
+                                                                                <div class="form-group has-icon-left" id="section_per_ps">
                                                                                     <label>Police Station</label>
                                                                                     <div class="position-relative">
-                                                                                    <select class="form-control" name="per_ps_name" id="">
+                                                                                    <select class="form-control" name="per_ps_name" id="per_ps_name">
                                                                                         <option value="">Choose police station...</option>
-                                                                                        <option value="Tajgaon">Tajgaon</option>
-                                                                                        <option value="Banani">Banani</option>
+                                                                                        {{-- <option value="Tajgaon">Tajgaon</option>
+                                                                                        <option value="Banani">Banani</option> --}}
                                                                                     </select>
                                                                                     </div>
                                                                                 </div>

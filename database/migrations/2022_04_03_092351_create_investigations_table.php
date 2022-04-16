@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttestorsTable extends Migration
+class CreateInvestigationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateAttestorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('attestors', function (Blueprint $table) {
+        Schema::create('investigations', function (Blueprint $table) {
             $table->id();
             $table->integer('complaint_id');
-            $table->string('w_name');
-            $table->string('w_mobile');
-            $table->longText('w_address');
+            $table->integer('user_id');
+            $table->longText('detail');
+            $table->dateTime('date');
+            $table->string('step');
             $table->string('status');
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ class CreateAttestorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attestors');
+        Schema::dropIfExists('investigations');
     }
 }

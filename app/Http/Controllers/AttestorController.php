@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Attestor;
 use Illuminate\Http\Request;
-use App\Models\District;
 
-class DistrictController extends Controller
+class AttestorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,9 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        $districts=District::latest()->get();
-        
-        return view('pages.districts.index',compact('districts'))
+        $attestors=Attestor::latest()->get();
+      
+        return view('pages.attestors.index',compact('attestors'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -27,7 +26,7 @@ class DistrictController extends Controller
      */
     public function create()
     {
-        return view('pages.districts.create');
+        //
     }
 
     /**
@@ -38,19 +37,7 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        $request->validate([
-            'name'=> 'required',
-            'status'=> 'required', 
-           
-        ]);
-
-        $input = $request->all();   
-
-        District::create($input);
-     
-         return redirect()->route('districts.index')
-                        ->with('success','District created successfully.');
+        //
     }
 
     /**
@@ -70,10 +57,9 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(District $district)
+    public function edit($id)
     {
-
-        return view('pages.districts.edit',compact('district'));
+        //
     }
 
     /**
@@ -83,17 +69,9 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, District $district)
+    public function update(Request $request, $id)
     {
-        request()->validate([
-            'name' => 'required',
-            'status' => 'required',
-        ]);
-    
-        $district->update($request->all());
-    
-        return redirect()->route('districts.index')
-                        ->with('success','District updated successfully');
+        //
     }
 
     /**
@@ -102,11 +80,10 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(District $district)
+    public function destroy(Attestor $attestor)
     {
-        $district->delete();
-    
-        return redirect()->route('$districts.index')
-                        ->with('success','District deleted successfully');
+        $attestor->delete();
+        return redirect()->route('attestors.index')
+                        ->with('success','Attestor deleted successfully');
     }
 }
