@@ -35,7 +35,7 @@
         <div id="main" class='layout-navbar'>
         @include("layouts.pages.main_header")
         @include("layouts.pages.main_content")
-        <!-- @include("layouts.pages.footer") -->
+        @include("layouts.pages.footer") 
         </div>
     </div>
     <script src="{{asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>

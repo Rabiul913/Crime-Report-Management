@@ -12,6 +12,7 @@ use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\InvestigationController;
 use App\Http\Controllers\AttestorController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +24,7 @@ use App\Http\Controllers\AttestorController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return redirect()->route('login');
 });
 
@@ -31,7 +32,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
+Route::get('/', function () {
+    return view('fontend.home');
+});
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function() {
@@ -46,6 +49,9 @@ Route::resource('complaint_types',ComplaintTypeController::class);
 Route::resource('complaints',ComplaintController::class);
 Route::resource('investigations',InvestigationController::class);
 Route::resource('attestors',AttestorController::class);
+
+Route::get('running-list',[ComplaintController::class, 'running_list']);
+Route::get('rejected-list',[ComplaintController::class, 'rejected_list']);
 
 Route::get('getpolicestations',[UserController::class, 'getPolicestations']);
 Route::get('getcomplaintpolicestations',[ComplaintController::class, 'getPolicestations']);

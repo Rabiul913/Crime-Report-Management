@@ -24,7 +24,27 @@ class ComplaintController extends Controller
         return view('pages.complaints.index',compact('complaints'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+    public function running_list()
+    {
+        $user_id=Auth::user()->id;
+        // $user = User::find($user_id);
+        $complaints=DB::table('complaints')->where('status','enable')->where('user_id',$user_id)->get();
+        // dd();
+      
+        return view('pages.complaints.index',compact('complaints'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
 
+    public function rejected_list()
+    {
+        $user_id=Auth::user()->id;
+        // $user = User::find($user_id);
+        $complaints=DB::table('complaints')->where('status','disable')->where('user_id',$user_id)->get();
+        // dd();
+      
+        return view('pages.complaints.index',compact('complaints'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
 
 
 
