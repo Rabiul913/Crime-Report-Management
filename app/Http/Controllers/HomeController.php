@@ -29,13 +29,13 @@ class HomeController extends Controller
         ->where("model_has_roles.model_id",Auth::user()->id)
         ->get();
 
-     $role_name = null;
-     
-    foreach($role as $item)
-    {
-        $role_name =$item->name;
-    }
-    // dd($role_name);
+            $role_name = null;
+            
+            foreach($role as $item)
+            {
+                $role_name =$item->name;
+            }
+    
         if($role_name=="User"){
             return view('fontend.home');
         }else{

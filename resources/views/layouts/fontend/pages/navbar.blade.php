@@ -57,13 +57,11 @@
                                         </li>
                                         <li class="nav-item">
                                         <a class="nav-link" href="#about">About</a>
-                                        </li>
-                                                    
+                                        </li>     
                                         <li class="nav-item">
                                             <a class="nav-link" href="#contact">Contacts</a>
                                             </li>
                                     </ul>
-                                
                     </div>
                     <button type="button" class="btn btn-outline-warning rounded-pill hidden-xs" data-toggle="modal" data-target="#Login">Login</button> &nbsp;&nbsp;
                     <button type="button" class="btn btn-outline-warning rounded-pill hidden-xs" data-toggle="modal" data-target="#Register" >Registration</button>
