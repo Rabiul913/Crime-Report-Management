@@ -1,20 +1,19 @@
 @extends('layouts.fontend.app')
 @section('content')
+
 <section style="min-height:500px">
     <div class="container">
         <div class="table-responsive" style="background-color: #ffffff;border-radius: 3px; margin: 2% 0 2% 0;">
             <h3 style="padding: 10px;"><strong>Complaint Rejected List</strong></h3>
             <table class="table table-dark table-hover" >
                <thead>
-                <tr>
-                    thi
-                    
+                <tr>                    
                     <th>Title</th>
                     <th>Victim Name</th>
                     <th>Address</th>
                     <th>Action</th>
                 </tr>
-               </thead>
+               </thead>               
                <tbody>
                 @foreach ($complaints as $complaint)
                     <tr>

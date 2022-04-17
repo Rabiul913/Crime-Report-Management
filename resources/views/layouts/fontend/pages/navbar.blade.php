@@ -10,15 +10,14 @@
   
         <!-- Navbar links -->
        
-
             @if (Auth::check())
                     <div class="collapse navbar-collapse text-white" id="collapsibleNavbar" style="padding-left: 200px;">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                <a class="nav-link" href="#home">Home</a>
+                                    <a class="nav-link" href="{{ url('/') }}">Home</a>
                                 </li>
                                 <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Complaint<span class="caret"></span></a>
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Complaint<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li class="nav-item"><a href="#" class="nav-link">Create Complaint</a></li>
                                     <li class="nav-item"><a href="{{ url('running-list') }}" class="nav-link">Running List</a></li>
@@ -26,10 +25,7 @@
                                     <li class="divider"></li>
                                 </ul>
                                 </li>
-                            
-                            
                             </ul>
-
                     </div>
 
                     <div id="mySidepanel" class="sidepanel">

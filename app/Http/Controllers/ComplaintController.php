@@ -28,7 +28,7 @@ class ComplaintController extends Controller
     {
         $user_id=Auth::user()->id;
         // $user = User::find($user_id);
-        $complaints=DB::table('complaints')->where('status','enable')->where('user_id',$user_id)->get();
+        $complaints=DB::table('complaints')->where('status',1)->where('user_id',$user_id)->get();
         // dd($complaints);
       
         return view('fontend.pages.running_list',compact('complaints'))
@@ -39,14 +39,14 @@ class ComplaintController extends Controller
     {
         $user_id=Auth::user()->id;
         // $user = User::find($user_id);
-        $complaints=DB::table('complaints')->where('status','disable')->where('user_id',$user_id)->get();
+        $complaints=DB::table('complaints')->where('status',0)->where('user_id',$user_id)->get();
         // dd();
-      
         return view('fontend.pages.rejected_list',compact('complaints'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
 
+    
 
     public function getPolicestations(Request $request) 
     {     
