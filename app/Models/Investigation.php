@@ -4,30 +4,33 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Police_station;
 
-class District extends Model
+class Investigation extends Model
 {
     use HasFactory;
 
-      /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        
-        'name',
+        'complaint_id',
+        'user_id',
+        'detail',
+        'date',
+        'step',
         'status',
     ];
+  
 
-    public function Police_station()
+    public function User()
     {
-        return $this->belongsTo(Police_station::class);
+        return $this->hasMany(User::class,'id','user_id');
     }
 
     public function Complaint()
     {
-        return $this->belongsTo(Complaint::class);
+        return $this->hasMany(Complaint::class,'id','complaint_id');
     }
 }

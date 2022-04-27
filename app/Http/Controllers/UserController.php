@@ -43,6 +43,8 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+   
     public function create()
     {
 
@@ -61,8 +63,40 @@ class UserController extends Controller
     }
 
         $roles = Role::pluck('name','name')->all();
+        $districts=District::latest()->get();
+        return view('pages.users.create', compact('roles','role_name','districts'));
+    }
 
-        return view('pages.users.create', compact('roles','role_name'));
+    
+    public function getPolicestations(Request $request) 
+    {     
+        if($request->ajax()){
+            return $request->pre_district;
+        }
+        // $pre_id = $request->pre_district;
+        
+        // $per_id= $request->per_district;
+
+        // $ps_id= $request->district_id;
+ 
+       
+        // if($pre_id>0){
+        //     $policestations = DB::table("police_stations")->where("district_id",$pre_id)->pluck("station_name","id");
+        //     //    dd($policestations);
+        //         return $policestations;
+        // }
+        // if($per_id>0){
+        //     $policestations = DB::table("police_stations")->where("district_id",$per_id)->pluck("station_name","id");
+        //     //    dd($policestations);
+        //         return $policestations;
+        // }
+
+        // if($ps_id>0){
+        //     $policestations = DB::table("police_stations")->where("district_id",$ps_id)->pluck("station_name","id");
+        //     //    dd($policestations);
+        //         return $policestations;
+        // }
+            
     }
 
     /**

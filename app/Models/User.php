@@ -50,4 +50,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    public function Complaint()
+    {
+        return $this->belongsTo(Complaint::class);
+    }
+    public function Investigation()
+    {
+        return $this->belongsTo(Investigation::class);
+    }
 }
