@@ -9,6 +9,12 @@ Users
                         <div class="card-header">
                         <h3 class="mt-0 header-title"><a href="{{route('users.create')}}" class="btn btn-primary">Create New</a></h3>
                         </div>
+                        @if ($message = Session::get('success'))
+                        <br>
+                            <div class="alert alert-success">
+                                <p>{{ $message }}</p>
+                            </div>
+                        @endif
                         <div class="card-body">
                         
                             <table class="table table-striped" id="table1">

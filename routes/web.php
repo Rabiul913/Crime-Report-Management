@@ -1,11 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\PoliceStationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +38,4 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 Route::resource('districts',DistrictController::class);
+Route::resource('police_stations',PoliceStationController::class);

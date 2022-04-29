@@ -46,6 +46,9 @@
                                 <li class="submenu-item ">
                                     <a href="{{ route('districts.index') }}">Districts List</a>
                                 </li>
+                                <li class="submenu-item ">
+                                    <a href="{{ route('police_stations.index') }}">Police Stations List</a>
+                                </li>
                             </ul>
                         </li>
             @endcanany
