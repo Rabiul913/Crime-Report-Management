@@ -29,7 +29,7 @@ use App\Http\Controllers\AttestorController;
 Route::get('/admin', function () {
     return redirect()->route('login');
 });
-
+sss
 
 
 Auth::routes();
