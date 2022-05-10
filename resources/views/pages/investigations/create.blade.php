@@ -90,9 +90,9 @@ Create Investigation
                                                         <div class="form-group has-icon-left">
                                                             <label for="name">Step:</label>
                                                             <div class="position-relative">
-                                                                <input type="radio" value="1" name="step"> Step 1
-                                                                <input type="radio" value="2" name="step"> Step 2
-                                                                <input type="radio" value="2" name="step"> Step 2
+                                                                <input type="radio" value="1" name="step"> After Complaint
+                                                                <input type="radio" value="2" name="step"> Before FIR
+                                                                <input type="radio" value="2" name="step"> Before Chargesheet
                                                                 <div class="form-control-icon">
                                                                     {{-- <i class="bi bi-layers"></i> --}}
                                                                 </div>
@@ -124,8 +124,35 @@ Create Investigation
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    
+                                                    <div class="col-12">
+                                                        <div class="table-responsive">
+                                                            <div class="table-wrapper">
+                                                                <div class="table-title">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-8"><h4>Attestors <b>Details</b></h4></div>
+                                                                        <div class="col-sm-4">
+                                                                            <button type="button" class="btn btn-info add-new" onclick="addAttestor();"><i class="fa fa-plus"></i> Add New</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <table class="table table-bordered">
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Name</th>
+                                                                        <th>Father's Name</th>
+                                                                        <th>Address</th>
+                                                                        <th>Phone</th>
+                                                                    </tr>
+                                                                    <tbody id="tbody"></tbody>
+                                                                </table>
+                                                             
+                                                                {{-- <button type="button" >Add Item</button> --}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                                
+
                                                     <div class="col-12 d-flex justify-content-end">
                                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $role = Role::join("model_has_roles","model_has_roles.role_id","=","roles.id")
+        ->where("model_has_roles.model_id",Auth::user()->id)
+        ->get();
+
+            $role_name = null;
+            
+            foreach($role as $item)
+            {
+                $role_name =$item->name;
+            }
+    
+        if($role_name=="User"){
+            return view('fontend.home');
+        }else{
+            return view('home');
+        }
+        
     }
 }

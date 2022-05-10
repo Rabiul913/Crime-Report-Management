@@ -85,6 +85,14 @@ Complaints
                                            
                                         </td>
                                         <td>
+
+                                            <form class="form form-vertical" action="{{ route('complaints.update',$complaint->id) }}" method="post">
+                                                @method('put')
+                                                @csrf
+                                            <input type="hidden" value="1" name="status">
+                                            <button type="submit" class="btn btn-danger">Accepted</button>
+                                            </form>
+
                                             <form class="my-2" action="{{ route('complaints.destroy',$complaint->id) }}" method="POST">
                                             
                                                   <a class="btn btn-success" href="{{ route('complaints.show',$complaint->id) }}">Show</a>

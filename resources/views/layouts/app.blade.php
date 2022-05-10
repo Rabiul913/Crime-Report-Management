@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/bootstrap-icons/bootstrap-icons.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <script src="{{asset('assets/vendors/jquery/jquery.min.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -34,7 +35,7 @@
         <div id="main" class='layout-navbar'>
         @include("layouts.pages.main_header")
         @include("layouts.pages.main_content")
-        <!-- @include("layouts.pages.footer") -->
+        @include("layouts.pages.footer") 
         </div>
     </div>
     <script src="{{asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
@@ -174,6 +175,28 @@
       
     
   </script>
-  
+<script>
+   var attestors = 0;
+   function addAttestor() {
+       attestors++;
+
+       var html = "<tr>";
+           html += "<td>" + attestors + "</td>";
+           html += "<td><input type='text' name='name[]'></td>";
+           html += "<td><input type='text' name='father_name[]'></td>";
+           html += "<td><input type='text' name='address[]'></td>";
+           html += "<td><input type='text' name='mobile[]'></td>";
+           html += "<td><button type='button' onclick='deleteRow(this);' class='btn btn-danger'>Delete</button></td>"
+       html += "</tr>";
+
+       var row = document.getElementById("tbody").insertRow();
+       row.innerHTML = html;
+   }
+
+function deleteRow(button) {
+   button.parentElement.parentElement.remove();
+   // first parentElement will be td and second will be tr.
+}
+</script>
 </body>
 </html>

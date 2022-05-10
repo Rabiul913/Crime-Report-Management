@@ -42,7 +42,9 @@
                     <li class="submenu-item ">
                         <a href="{{ route('investigations.index') }}">Investigations List</a>
                     </li>
-                    
+                    <li class="submenu-item ">
+                        <a href="{{ route('attestors.index') }}">Attestors List</a>
+                    </li>
                 </ul>
             </li>
 

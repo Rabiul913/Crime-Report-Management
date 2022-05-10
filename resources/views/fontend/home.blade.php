@@ -1,0 +1,9 @@
+@extends('layouts.fontend.app')
+@section('content')
+@include("layouts.fontend.pages.welcome")
+@include("layouts.fontend.pages.about")
+@include("layouts.fontend.pages.counter")
+@include("layouts.fontend.pages.why_us")
+@include("layouts.fontend.pages.modal")
+@include("layouts.fontend.pages.contact")
+@endsection

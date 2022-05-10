@@ -52,5 +52,10 @@ class Complaint extends Model
     {
         return $this->belongsTo(Investigation::class);
     }
+
+    public function Attestor()
+    {
+        return $this->belongsTo(Attestor::class);
+    }
            
 }

@@ -102,8 +102,11 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(District $district)
     {
-        //
+        $district->delete();
+    
+        return redirect()->route('$districts.index')
+                        ->with('success','District deleted successfully');
     }
 }

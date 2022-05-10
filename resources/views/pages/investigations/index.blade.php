@@ -23,7 +23,7 @@ Incestigations
                                 <thead>
                                     <tr>
                                         <th>SL.</th>
-                                        <th>Investigator Name</th>
+                                        <th>Investigation Officer Name</th>
                                         <th>Complaint ID</th>
                                         <th>Complaint Title</th>
                                         <th>Detail</th>
@@ -53,20 +53,16 @@ Incestigations
                                                       @endif
                                         @endforeach
                                         <td>{{ $co_name }}</td>
-
-                                        @php
-                                        $detail=strip_tags($investigation->detail);
-                                        @endphp
-                                        <td>{{ $detail }}</td>
+                                       
+                                        <td>{{ strip_tags($investigation->detail) }}</td>
                                         <td>{{ $investigation->date }}</td>
                                         <td>{{ $investigation->step }}</td>
-                                        <td>
-                                            @if ($investigation->status == 1)
-                                            <span class="badge bg-success">Enable</span>
-                                            @elseif($investigation->status == 0)
+                                        <td>                                           
+                                            @if($investigation->status == 0)
                                             <span class="badge bg-danger">Disable</span>
+                                            @elseif($investigation->status == 1)
+                                            <span class="badge bg-success">Enable</span>
                                             @endif
-                                           
                                         </td>
                                         <td>
                                             <form class="my-2" action="{{ route('investigations.destroy',$investigation->id) }}" method="POST">
