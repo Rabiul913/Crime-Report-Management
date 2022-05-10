@@ -10,6 +10,7 @@ use App\Http\Controllers\PoliceStationController;
 use App\Http\Controllers\ComplaintTypeController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\InvestigationController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
