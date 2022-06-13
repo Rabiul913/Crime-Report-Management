@@ -10,6 +10,7 @@ use App\Http\Controllers\PoliceStationController;
 use App\Http\Controllers\ComplaintTypeController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\InvestigationController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -23,12 +24,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+// Authentication Routes...
+
 
 
 Route::get('/admin', function () {
     return redirect()->route('login');
 });
-sss
+
+Route::get('logout',[LoginController::class, 'logout']);
 
 
 Auth::routes();
@@ -51,6 +55,7 @@ Route::resource('complaints',ComplaintController::class);
 Route::resource('investigations',InvestigationController::class);
 Route::resource('attestors',AttestorController::class);
 
+Route::get('pending-list',[ComplaintController::class, 'pending_list']);
 Route::get('running-list',[ComplaintController::class, 'running_list']);
 Route::get('rejected-list',[ComplaintController::class, 'rejected_list']);
 

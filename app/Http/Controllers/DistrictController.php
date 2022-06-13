@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\District;
 
 class DistrictController extends Controller
@@ -14,10 +15,11 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        $districts=District::latest()->get();
+ 
+        // $districts=District::latest()->get();
         
-        return view('pages.districts.index',compact('districts'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+        // return view('pages.districts.index',compact('districts'))
+        // ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

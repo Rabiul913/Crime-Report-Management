@@ -14,15 +14,20 @@
                 </tr>
                </thead>
                <tbody>
-                                
-                       @foreach ($complaints as $complaint)
+                    <tr>
+                       <td>Complaint for Death threat</td>
+                       <td>Shoriful Islam</td>
+                       <th>Tajgaon, Farmgate, Dhaka-1215</th>
+                       <!-- <th></th> -->
+                    </tr>           
+                       <!-- @foreach ($complaints as $complaint)
                         <tr>
                             <td>{{ $complaint->co_title }}</td>
                             <td>{{ $complaint->co_against_name }}</td>
                             <td>{{ $complaint->co_against_address }}</td>
                             <td><a class="btn btn-primary" href="">View Detail</a></td>
                         </tr>
-                       @endforeach
+                       @endforeach -->
             
                </tbody>
             </table>

@@ -77,10 +77,12 @@ Complaints
                                         <td>{{ $police .",". $complaint->co_against_address }}</td>
 
                                         <td>
-                                            @if ($complaint->status == 1)
-                                            <span class="badge bg-success">Enable</span>
+                                        @if ($complaint->status == 1)
+                                            <span class="badge bg-success">Running</span>
                                             @elseif($complaint->status == 0)
-                                            <span class="badge bg-danger">Disable</span>
+                                            <span class="badge bg-info">Pending</span>
+                                            @else
+                                            <span class="badge bg-danger">Rejected</span>
                                             @endif
                                            
                                         </td>

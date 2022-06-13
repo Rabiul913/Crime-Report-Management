@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 class LoginController extends Controller
 {
@@ -37,4 +39,27 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    public function logout() {
+        
+        $role = Role::join("model_has_roles","model_has_roles.role_id","=","roles.id")
+        ->where("model_has_roles.model_id",Auth::user()->id)
+        ->get();
+
+            $role_name = null;
+            
+            foreach($role as $item)
+            {
+                $role_name =$item->name;
+            }
+    
+        if($role_name=="User"){
+            Auth::logout();
+            return view('fontend.home');
+        }else{
+            Auth::logout();
+            return redirect('/admin');
+        }
+        // dd(Auth::user());
+        
+      }
 }

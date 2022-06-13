@@ -9,7 +9,7 @@
           <!-- <h2 class="text-white">Delivering great Service for more than 50 years!</h2> -->
 
           <div class="btns">
-            <a href=""> <button type="button" class="btn btn-outline-warning rounded-pill" style="font-size: 24px;">Start Now</button></a>
+            <a href="tel:999"> <button type="button" class="btn btn-outline-warning rounded-pill" style="font-size: 24px;">Emergency</button></a>
            <!-- <a  href="#book-a-table"><button type="button" class="btn btn-outline-warning rounded-pill" data-toggle="modal" data-target="#Register" style="font-size: 24px;">Registration</button></a> -->
             
           </div>

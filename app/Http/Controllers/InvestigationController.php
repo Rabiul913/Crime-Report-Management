@@ -7,8 +7,8 @@ use App\Models\Attestor;
 use App\Models\User;
 use App\Models\Complaint;
 use Illuminate\Http\Request;
-use Auth;
-use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class InvestigationController extends Controller
 {

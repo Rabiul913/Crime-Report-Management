@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+
+
+use Spatie\Permission\Models\Role;
 use App\Models\User;
 use App\Models\District;
 use App\Models\Complaint;
 use App\Models\Complaint_type;
+use App\Models\Police_station;
 use Illuminate\Http\Request;
-use Auth;
-use DB;
+use Stevebauman\Location\Facades\Location;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class ComplaintController extends Controller
 {
@@ -24,6 +30,20 @@ class ComplaintController extends Controller
         return view('pages.complaints.index',compact('complaints'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
+    public function pending_list()
+    {
+        
+        $user_id=Auth::user()->id;
+        // $user = User::find($user_id);
+        $complaints=DB::table('complaints')->where('status',0)->where('user_id',$user_id)->get();
+        // dd($complaints);
+      
+        return view('fontend.pages.pending_list',compact('complaints'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+
     public function running_list()
     {
         $user_id=Auth::user()->id;
@@ -38,9 +58,12 @@ class ComplaintController extends Controller
     public function rejected_list()
     {
         $user_id=Auth::user()->id;
+
+
         // $user = User::find($user_id);
         $complaints=DB::table('complaints')->where('status',0)->where('user_id',$user_id)->get();
         // dd();
+
         return view('fontend.pages.rejected_list',compact('complaints'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -67,16 +90,42 @@ class ComplaintController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $user_id=Auth::user()->id;
+        // $ip = $request->ip();
+        $ip='103.83.235.135';
+        // $ip = '162.159.24.227'; /* Static IP address */
+        $currentUserInfo = Location::get($ip);
+
+        // dd($currentUserInfo);
+        // $user_id=Auth::user()->id;
         // dd($user_id);
-        $user = User::find($user_id);
+        $user = User::find(Auth::user()->id);
 
         // dd($user);
-        $districts=District::latest()->get();
+        $districts=District::latest()->where('name',$currentUserInfo->cityName)->get();
+        $district=$districts[0];
+        // dd($district->id);
+        $policestations=Police_station::latest()->where('district_id',$district->id)->get();
+        // dd($policestations);
         $types=Complaint_type::latest()->get();
-        return view('pages.complaints.create', compact('user','districts','types'));
+
+        $role = Role::join("model_has_roles","model_has_roles.role_id","=","roles.id")
+        ->where("model_has_roles.model_id",Auth::user()->id)
+        ->get();
+
+            $role_name = null;
+            
+            foreach($role as $item)
+            {
+                $role_name =$item->name;
+            }
+    
+        if($role_name=="User"){
+            return view('fontend.pages.create_complaint',compact('user','district','types','policestations'));
+        }else{
+            return view('pages.complaints.create', compact('user','districts','types'));
+        }
 
     }
 
@@ -88,6 +137,11 @@ class ComplaintController extends Controller
      */
     public function store(Request $request)
     {
+    
+      
+
+// dd($request);
+
         $request->validate([
             'user_id'=> 'required',
             'co_title'=> 'required',
@@ -104,10 +158,36 @@ class ComplaintController extends Controller
         $input = $request->all();   
 
         Complaint::create($input);
-     
-         return redirect()->route('complaints.index')
-                        ->with('success','Complaint created successfully.');
+        $role = Role::join("model_has_roles","model_has_roles.role_id","=","roles.id")
+        ->where("model_has_roles.model_id",Auth::user()->id)
+        ->get();
+
+            $role_name = null;
+            
+            foreach($role as $item)
+            {
+                $role_name =$item->name;
+            }
+
+            if ($file = $request->file('file')) {
+                $destinationPath = 'file/complaint';
+                $complaintfile = date('YmdHis') . "." . $file->getClientOriginalExtension();
+                $file->move($destinationPath, $complaintfile);
+                $input['file'] = "$complaintfile";
+            }
+    
+        if($role_name=="User"){
+            return redirect('pending-list')
+            ->with('success','Complaint submited successfully.');
+        }else{
+            return redirect()->route('complaints.index')
+            ->with('success','Complaint created successfully.');
+        } 
     }
+
+    
+
+
 
     /**
      * Display the specified resource.

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\District;
+use App\Models\Police_station;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Spatie\Permission\Models\Role;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -70,32 +71,26 @@ class UserController extends Controller
     
     public function getPolicestations(Request $request) 
     {     
-        if($request->ajax()){
-            return $request->pre_district;
-        }
-        // $pre_id = $request->pre_district;
-        
-        // $per_id= $request->per_district;
+        // if($request->ajax()){
+        //     return $request->pre_district;
+        // }
+        $pre_id = $request->pre_district;
+        // dd($request);
+        $per_id= $request->per_district;
 
         // $ps_id= $request->district_id;
  
        
-        // if($pre_id>0){
-        //     $policestations = DB::table("police_stations")->where("district_id",$pre_id)->pluck("station_name","id");
-        //     //    dd($policestations);
-        //         return $policestations;
-        // }
-        // if($per_id>0){
-        //     $policestations = DB::table("police_stations")->where("district_id",$per_id)->pluck("station_name","id");
-        //     //    dd($policestations);
-        //         return $policestations;
-        // }
-
-        // if($ps_id>0){
-        //     $policestations = DB::table("police_stations")->where("district_id",$ps_id)->pluck("station_name","id");
-        //     //    dd($policestations);
-        //         return $policestations;
-        // }
+        if($pre_id>0){
+            $policestations = DB::table("police_stations")->where("district_id",$pre_id)->pluck("station_name","id");
+            //    dd($policestations);
+                return $policestations;
+        }
+        if($per_id>0){
+            $policestations = DB::table("police_stations")->where("district_id",$per_id)->pluck("station_name","id");
+            //    dd($policestations);
+                return $policestations;
+        }
             
     }
 
@@ -161,10 +156,11 @@ class UserController extends Controller
         $user = User::find($id);
         $roles = Role::pluck('name', 'name')->all();
         $districts=District::latest()->get();
+        $policestations=Police_station::latest()->get();
         $userRole = $user->roles->pluck('name', 'name')->all();
 
         $role = Role::join("model_has_roles","model_has_roles.role_id","=","roles.id")
-        ->where("model_has_roles.model_id",Auth::user()->id)
+        ->where("model_has_roles.model_id",$id)
         ->get();
    
      $role_name = null;
@@ -187,8 +183,8 @@ $permanent_address=explode('|', $user->permanent_address);
     // $p_address=['pre_address'=>array[0],'pre_pcode'=>array[1],'pre_ps'=>array[2],'pre_dis'=>$array[3]];
     
 
-    
-        return view('pages.users.edit', compact('user','roles','districts','userRole','role_name','present_address','permanent_address'));
+   
+        return view('pages.users.edit', compact('user','roles','districts','policestations','userRole','role_name','present_address','permanent_address'));
     }
 
     /**

@@ -25,6 +25,7 @@ class Complaint extends Model
             'co_type_id',
             'detail',
             'co_date',
+            'file',
             'status',
     ];
 
