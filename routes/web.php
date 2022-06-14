@@ -20,15 +20,19 @@ use App\Http\Controllers\PoliceStationController;
 |
 */
 
-Route::get('/', function () {
+
+
+Route::get('/admin', function () {
     return redirect()->route('login');
 });
-
+sss
 
 
 Auth::routes();
 
-
+Route::get('/', function () {
+    return view('fontend.home');
+});
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function() {

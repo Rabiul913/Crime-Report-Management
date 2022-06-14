@@ -16,14 +16,26 @@ class District extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-
+        
         'name',
         'status',
     ];
 
+<<<<<<< HEAD
     // public function Police_station()
     // {
     //     return $this->hasMany(Police_station::class);
     // }
 
+=======
+    public function Police_station()
+    {
+        return $this->belongsTo(Police_station::class);
+    }
+
+    public function Complaint()
+    {
+        return $this->belongsTo(Complaint::class);
+    }
+>>>>>>> c0ba14c2791c6c480c645da23d86bf9aff865d81
 }

@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('nationality');
             $table->string('mobile');
+            $table->integer('nid');
             $table->longText('present_address');
             $table->longText('permanent_address');
             $table->timestamp('email_verified_at')->nullable();

@@ -25,7 +25,30 @@
                             </ul>
                         </li>
             @endcanany
-                    
+
+
+            <li class="sidebar-item  has-sub">
+                <a href="#" class='sidebar-link'>
+                    <i class="bi bi-stack"></i>
+                    <span>Complaint Sections</span>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item ">
+                        <a href="{{ route('complaint_types.index') }}">Complaint Types List</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="{{ route('complaints.index') }}">Complaints List</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="{{ route('investigations.index') }}">Investigations List</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="{{ route('attestors.index') }}">Attestors List</a>
+                    </li>
+                </ul>
+            </li>
+
+            
 
             @canany(['user-create','user-edit','user-list','user-delete','role-create','role-edit','role-list','role-delete','permission-create','permission-edit','permission-list','permission-delete'])
                         <li class="sidebar-item  has-sub">
@@ -52,6 +75,8 @@
                             </ul>
                         </li>
             @endcanany
+
+           
 
                     </ul>
                 </div>

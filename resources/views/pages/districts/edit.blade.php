@@ -25,7 +25,12 @@ Edit District
 
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-vertical" action="{{ route('districts.store') }}" method="post">
+                                        <form class="form form-vertical" action="{{ route('districts.update',$district->id) }}" method="post">
+                                            @method('put')
+<<<<<<< HEAD
+                                    
+=======
+>>>>>>> 92edfc350866cb952fc84bc8e0a34813828aa8ea
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row ps-3">
@@ -33,7 +38,7 @@ Edit District
                                                         <div class="form-group has-icon-left">
                                                             <label for="name">Name</label>
                                                             <div class="position-relative">
-                                                                <input type="text" class="form-control" placeholder="Name" value="{{ old('name') }}" name="name" id="name">
+                                                                <input type="text" class="form-control" placeholder="Name" value="{{ $district->name }}" name="name" id="name">
                                                                 <div class="form-control-icon">
                                                                     <i class="bi bi-map"></i>
                                                                 </div>
@@ -48,7 +53,10 @@ Edit District
                                                         <div class="form-group has-icon-left">
                                                             <!-- <label for="status">Status</label> -->
                                                             <div class="position-relative">
-                                                                <input type="hidden" class="form-control" name="status" id="status" value=1>
+                                                                <label for="name">Status</label><br>
+                                                                            
+                                                                <input type="radio"  @if($district->status == 1) checked='true' @endif value="1" name="status"> Enable
+                                                                <input type="radio"  @if($district->status == 0) checked='true' @endif value="0" name="status"> Disable
                                                                 <div class="form-control-icon">
                                                                     <!-- <i class="bi bi-card"></i> -->
                                                                 </div>
