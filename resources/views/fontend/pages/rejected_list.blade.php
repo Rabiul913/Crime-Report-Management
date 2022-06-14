@@ -11,18 +11,24 @@
                     <th>Title</th>
                     <th>Victim Name</th>
                     <th>Address</th>
-                    <th>Action</th>
+                    <!-- <th>Action</th> -->
                 </tr>
                </thead>               
                <tbody>
-                @foreach ($complaints as $complaint)
+                   <tr>
+                       <td>Complaint for Land grabbing</td>
+                       <td>Riyed Hossain</td>
+                       <th>East shewrapara, mirpur, Dhaka-1512</th>
+                       <!-- <th></th> -->
+                   </tr>
+                <!-- @foreach ($complaints as $complaint)
                     <tr>
                         <td>{{ $complaint->co_title }}</td>
                         <td>{{ $complaint->co_against_name }}</td>
                         <td>{{ $complaint->co_against_address }}</td>
                         <td><a class="btn btn-primary" href="">View Detail</a></td>
                     </tr>
-                @endforeach
+                @endforeach -->
                </tbody>
             </table>
         </div>

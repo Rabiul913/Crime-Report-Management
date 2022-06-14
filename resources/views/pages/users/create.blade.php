@@ -100,8 +100,7 @@ Create Users
                                                                                     <div class="position-relative">
                                                                                         <select class="form-control" name="ps_name" id="ps_name">
                                                                                             <option value="">Choose police station...</option>
-                                                                                            {{-- <option value="Tajgaon">Tajgaon</option>
-                                                                                            <option value="Banani">Banani</option> --}}
+                                                                                            
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -160,8 +159,7 @@ Create Users
                                                                                     <div class="position-relative">
                                                                                     <select class="form-control" name="per_ps_name" id="per_ps_name">
                                                                                         <option value="">Choose police station...</option>
-                                                                                        {{-- <option value="Tajgaon">Tajgaon</option>
-                                                                                        <option value="Banani">Banani</option> --}}
+                                                                                       
                                                                                     </select>
                                                                                     </div>
                                                                                 </div>

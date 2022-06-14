@@ -19,7 +19,8 @@
                                 <li class="dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Complaint<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li class="nav-item"><a href="#" class="nav-link">Create Complaint</a></li>
+                                    <li class="nav-item"><a href="{{ route('complaints.create') }}" class="nav-link">Create Complaint</a></li>
+                                    <li class="nav-item"><a href="{{ url('pending-list') }}" class="nav-link">Pending List</a></li>
                                     <li class="nav-item"><a href="{{ url('running-list') }}" class="nav-link">Running List</a></li>
                                     <li class="nav-item"><a href="{{ url('rejected-list') }}" class="nav-link">Rejected List</a></li>
                                     <li class="divider"></li>

@@ -20,12 +20,15 @@ use App\Http\Controllers\PoliceStationController;
 |
 */
 
+// Authentication Routes...
+
 
 
 Route::get('/admin', function () {
     return redirect()->route('login');
 });
-sss
+
+Route::get('logout',[LoginController::class, 'logout']);
 
 
 Auth::routes();

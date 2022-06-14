@@ -84,12 +84,22 @@ Edit Users
                                                                             <div class="col-12">
                                                                                 <div class="form-group has-icon-left">
                                                                                     <label>District</label>
+                                                                                    
                                                                                     <div class="position-relative">
                                                                                         <select class="form-control" name="pre_district" id="">
                                                                                             <option value="">Choose your district...</option>
+                                                                                            
+                                                                                        @if(count($present_address)>1) 
+                                                                                            
                                                                                             @foreach ($districts as $district)
                                                                                             <option @if($present_address[3]== $district->name) selected="true" @endif  value="{{ $district->name }}" >{{ $district->name }}</option>
-                                                                                            @endforeach                                                                                                                                                                                                               
+                                                                                            @endforeach
+                                                                                        @else
+                                                                                            @foreach ($districts as $district)
+                                                                                            <option value="{{ $district->name }}" >{{ $district->name }}</option>
+                                                                                            @endforeach
+                                                                                        @endif
+                                                                                                                                                                                                                                                                                                          
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -100,8 +110,17 @@ Edit Users
                                                                                     <div class="position-relative">
                                                                                         <select class="form-control" name="ps_name" id="">
                                                                                             <option value="">Choose police station...</option>
-                                                                                            <option @if(strpos($user->present_address, "Tajgaon") !== false) selected="true" @endif value="Tajgaon">Tajgaon</option>
-                                                                                            <option @if(strpos($user->present_address, "Banani") !== false) selected="true" @endif value="Banani">Banani</option>
+                                                                                        @if(count($present_address)>1) 
+                                                                                            @foreach($policestations as $station)
+                                                                                            <option @if($present_address[2]== $station->station_name) selected="true" @endif  value="{{$station->station_name}}">{{$station->station_name}}</option>
+                                                                                            @endforeach
+                                                                                        @else
+                                                                                            @foreach($policestations as $station)
+                                                                                            <option value="{{$station->station_name}}">{{$station->station_name}}</option>
+                                                                                            @endforeach
+                                                                                        @endif
+                                                                                            <!-- <option @if(strpos($user->present_address, "Tajgaon") !== false) selected="true" @endif value="Tajgaon">Tajgaon</option>
+                                                                                            <option @if(strpos($user->present_address, "Banani") !== false) selected="true" @endif value="Banani">Banani</option> -->
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -111,7 +130,11 @@ Edit Users
                                                                                 <div class="form-group has-icon-left">
                                                                                     <label>Postal Code</label>
                                                                                     <div class="position-relative">
+                                                                                    @if(count($present_address)>1)
                                                                                         <input type="number" class="form-control" value="{{ $present_address[1] }}" name='pre_postal_code'>
+                                                                                    @else
+                                                                                        <input type="number" class="form-control" name='pre_postal_code'>
+                                                                                    @endif
                                                                                         <div class="form-control-icon">
                                                                                             <i class="bi bi-code"></i>
                                                                                         </div>
@@ -122,7 +145,13 @@ Edit Users
                                                                                 <div class="form-group has-icon-left">
                                                                                     <label>Address:</label>
                                                                                     <div class="position-relative">
+                                                                                    @if(count($present_address)>1)
+                                                                                                                                       
                                                                                         <input type="text" class="form-control" name="pre_address" value="{{ $present_address[0] }}" placeholder="Present Address">
+                                                                                    @else
+                                                                                        <input type="text" class="form-control" name="pre_address" placeholder="Present Address">
+                                                                                    @endif
+                                                                                       
                                                                                         <div class="form-control-icon">
                                                                                             <i class="bi bi-map"></i>
                                                                                         </div>
@@ -142,9 +171,16 @@ Edit Users
                                                                                     <div class="position-relative">
                                                                                         <select class="form-control" name="per_district" id="">
                                                                                             <option value="">Choose your district...</option>
+
+                                                                                        @if(count($permanent_address)>1)
                                                                                             @foreach ($districts as $district)
                                                                                             <option @if($permanent_address[3]== $district->name) selected="true" @endif  value="{{ $district->name }}" >{{ $district->name }}</option>
                                                                                             @endforeach 
+                                                                                        @else
+                                                                                            @foreach ($districts as $district)
+                                                                                            <option  value="{{ $district->name }}" >{{ $district->name }}</option>
+                                                                                            @endforeach 
+                                                                                        @endif
                                                                                         </select>
                                                                             
                                                                                     </div>
@@ -153,11 +189,19 @@ Edit Users
                                                                             <div class="col-12">
                                                                                 <div class="form-group has-icon-left">
                                                                                     <label>Police Station</label>
+
                                                                                     <div class="position-relative">
                                                                                     <select class="form-control" name="per_ps_name" id="">
                                                                                         <option value="">Choose police station...</option>
-                                                                                        <option @if($permanent_address[2]== "Tajgaon") selected="true" @endif  value="Tajgaon">Tajgaon</option>
-                                                                                        <option @if($permanent_address[2]== "Banani") selected="true" @endif value="Banani">Banani</option>
+                                                                                        @if(count($permanent_address)>1)
+                                                                                            @foreach($policestations as $station)
+                                                                                            <option @if($permanent_address[2]== $station->station_name) selected="true" @endif  value="{{$station->station_name}}">{{$station->station_name}}</option>
+                                                                                            @endforeach
+                                                                                        @else
+                                                                                            @foreach($policestations as $station)
+                                                                                            <option value="{{$station->station_name}}">{{$station->station_name}}</option>
+                                                                                            @endforeach
+                                                                                        @endif
                                                                                     </select>
                                                                                     </div>
                                                                                 </div>
@@ -166,8 +210,14 @@ Edit Users
                                                                             <div class="col-12">
                                                                                 <div class="form-group has-icon-left">
                                                                                     <label for="mobile-id-icon">Postal Code</label>
+
                                                                                     <div class="position-relative">
-                                                                                        <input type="number" class="form-control" value="{{ $permanent_address[1] }}" name='per_postal_code'>
+                                                                                    @if(count($permanent_address)>1)
+                                                                                    <input type="number" class="form-control" value="{{ $permanent_address[1] }}" name='per_postal_code'>                                                                                      
+                                                                                   
+                                                                                    @else
+                                                                                    <input type="number" class="form-control" name='per_postal_code'>
+                                                                                    @endif
                                                                                         <div class="form-control-icon">
                                                                                             <i class="bi bi-code"></i>
                                                                                         </div>
@@ -206,6 +256,7 @@ Edit Users
                                                                 <label for="status">Roles</label> 
                                                                 <div class="position-relative">
                                                                     <select name="roles[]" id="roles[]" class="form-control" multiple="multiple">
+                                                                    <option value="">Choose Role...</option>
                                                                         @foreach ($roles as $key => $role)
                                                                             <option @if($role_name == "$role") selected="true" @endif value="{{ $key }}"> {{ $role }}</option>
                                                                         @endforeach

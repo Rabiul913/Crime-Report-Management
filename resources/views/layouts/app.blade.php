@@ -17,9 +17,10 @@
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <script src="{{asset('assets/vendors/jquery/jquery.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script> 
+    <!-- <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>  -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.svg')}}" type="image/x-icon">
 </head>
 
@@ -29,7 +30,7 @@
             <div class="sidebar-wrapper active">
               @include("layouts.pages.sidebar_header")
               @include("layouts.pages.sidebar_menu")
-                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+              <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
             </div>
         </div>
         <div id="main" class='layout-navbar'>
@@ -67,13 +68,14 @@
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
   });
+
       $(document).ready(function ()
       {
          
             $("#pre_district").change(function() {
               var pre_district = $(this).val();
             //   console.log(pre_district);
-            //   alert(pre_district);
+              alert(pre_district);
                  if (pre_district) {
                     
                     $('#section_ps').show();
@@ -120,6 +122,7 @@
                                         console.log(res);
                                 $('select[id="per_ps_name"]').empty();
                                 $.each(res, function(key,value){
+                                   
                                       $('select[name="per_ps_name"]').append('<option value="'+ key +'">'+ value +'</option>');
                                 });
                              }

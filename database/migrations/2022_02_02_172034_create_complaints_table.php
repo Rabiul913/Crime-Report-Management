@@ -24,6 +24,7 @@ class CreateComplaintsTable extends Migration
             $table->integer('co_type_id');
             $table->longText('co_detail');
             $table->dateTime('co_date');
+            $table->string('file');
             $table->string('status');
             $table->timestamps();
         });

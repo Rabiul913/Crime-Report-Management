@@ -32,6 +32,15 @@
 @yield('content')
 @include("layouts.fontend.pages.footer")
          
+
+<script>
+        $("body").ready(function(){
+        setTimeout(function(){
+        $("div.alert").remove();
+        }, 3000 ); // 3 secs
+
+    });
+    </script>
 <script>
             
             $(".navbar-nav>li>a").on('click',function(){

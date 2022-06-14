@@ -8,26 +8,55 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
+       
+       
                         
             @canany(['criminal-create','criminal-edit','criminal-list','criminal-delete','crime-create','crime-edit','crime-list','crime-delete'])
-                        <li class="sidebar-item  has-sub">
+            <li class="sidebar-title">Crime Sections</li>    
+            <li class="sidebar-item  ">
                             <a href="#" class='sidebar-link'>
-                                <i class="bi bi-hourglass-top"></i>
-                                <span>Crime Sections</span>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Criminals List</span>
                             </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="component-alert.html">Criminals List</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-alert.html">Crimes List</a>
-                                </li>
-                            </ul>
-                        </li>
+            </li>
+            <li class="sidebar-item  ">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Crimes List</span>
+                            </a>
+            </li>
+
             @endcanany
 
+            <li class="sidebar-title">Complaint Sections</li>    
+            <li class="sidebar-item  ">
+                            <a href="{{ route('complaint_types.index') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Complaint Types List</span>
+                            </a>
+            </li>
+            <li class="sidebar-item  ">
+                            <a href="{{ route('complaints.index') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Complaints List</span>
+                            </a>
+            </li>
+            <li class="sidebar-item  ">
+                            <a href="{{ route('investigations.index') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Investigations List</span>
+                            </a>
+            </li>
 
-            <li class="sidebar-item  has-sub">
+            <li class="sidebar-item  ">
+                            <a href="{{ route('attestors.index') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Attestors List</span>
+                            </a>
+            </li>
+
+
+            <!-- <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-stack"></i>
                     <span>Complaint Sections</span>
@@ -46,34 +75,42 @@
                         <a href="{{ route('attestors.index') }}">Attestors List</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             
 
             @canany(['user-create','user-edit','user-list','user-delete','role-create','role-edit','role-list','role-delete','permission-create','permission-edit','permission-list','permission-delete'])
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-stack"></i>
-                                <span>System Sections</span>
+            <li class="sidebar-title">System Sections</li>    
+            <li class="sidebar-item  ">
+                            <a href="{{ route('users.index') }}" class='sidebar-link'>
+                                <i class="bi bi-person-square"></i>
+                                <span>Users List</span>
                             </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="{{ route('users.index') }}">Users List</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="{{ route('roles.index') }}">Roles List</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="{{ route('permissions.index') }}">Permissions List</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="{{ route('districts.index') }}">Districts List</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="{{ route('police_stations.index') }}">Police Stations List</a>
-                                </li>
-                            </ul>
-                        </li>
+            </li>
+            <li class="sidebar-item  ">
+                            <a href="{{ route('roles.index') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Roles List</span>
+                            </a>
+            </li>
+            <li class="sidebar-item  ">
+                            <a href="{{ route('permissions.index') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Permissions List</span>
+                            </a>
+            </li>
+            <li class="sidebar-item  ">
+                            <a href="{{ route('districts.index') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Districts List</span>
+                            </a>
+            </li>
+            <li class="sidebar-item  ">
+                            <a href="{{ route('police_stations.index') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Police Stations List</span>
+                            </a>
+            </li>
             @endcanany
 
            
