@@ -7,7 +7,7 @@
             <h3 style="padding: 10px;"><strong>Complaint Create</strong></h3>
           
             <div class="m-5">
-                                        <form class="form form-vertical" action="{{ route('complaints.store') }}" method="post">
+                                        <form class="form form-vertical" action="{{ route('complaints.store') }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row ps-3">
@@ -15,13 +15,12 @@
                                                         <div class="form-group has-icon-left">
                                                             <label>Complainer Name:</label>
                                                             <div class="position-relative">
-                                                            <select class="form-control" name="user_id" id="user_id" readonly="readonly">
-                                                                <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
-                                                            </select>
-                                                            <div class="form-control-icon">
-                                                                <i class="bi bi-person"></i>
-                                                            </div>
-                                                         
+                                                                <select class="form-control" name="user_id" id="user_id" readonly="readonly">
+                                                                    <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                                                                </select>
+                                                                <div class="form-control-icon">
+                                                                    <i class="bi bi-person"></i>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

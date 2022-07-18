@@ -195,10 +195,11 @@ class ComplaintController extends Controller
      * @param  \App\Models\Complaint  $complaint
      * @return \Illuminate\Http\Response
      */
-    public function show(Complaint $complaint)
+    public function show(Complaint $Complaint)
     {
-        //
+        return view('pages.complaints.view',compact('Complaint'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

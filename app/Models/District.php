@@ -21,13 +21,6 @@ class District extends Model
         'status',
     ];
 
-<<<<<<< HEAD
-    // public function Police_station()
-    // {
-    //     return $this->hasMany(Police_station::class);
-    // }
-
-=======
     public function Police_station()
     {
         return $this->belongsTo(Police_station::class);
@@ -37,5 +30,4 @@ class District extends Model
     {
         return $this->belongsTo(Complaint::class);
     }
->>>>>>> c0ba14c2791c6c480c645da23d86bf9aff865d81
 }

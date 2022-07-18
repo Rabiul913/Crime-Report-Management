@@ -60,7 +60,7 @@ class ComplaintTypeController extends Controller
      */
     public function show(Complaint_type $complaint_type)
     {
-        //
+        return view('pages.complaint_types.view',compact('complaint_type'));
     }
 
     /**
