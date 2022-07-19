@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Police_station;
 use App\Models\District;
 
-
 class PoliceStationController extends Controller
 {
     /**
@@ -75,9 +74,9 @@ class PoliceStationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Police_station $police_station)
     {
-        //
+        return view('pages.police_stations.view',compact('police_station'));
     }
 
     /**

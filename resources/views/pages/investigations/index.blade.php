@@ -67,15 +67,15 @@ Incestigations
                                         <td>
                                             <form class="my-2" action="{{ route('investigations.destroy',$investigation->id) }}" method="POST">
                                             
-                                                  <a class="btn btn-success" href="{{ route('investigations.show',$investigation->id) }}">Show</a>
+                                                  <a class="btn btn-success" href="{{ route('investigations.show',$investigation->id) }}"><i class="bi bi-display"></i></a>
                                             
                                               
-                                                  <a class="btn btn-primary" href="{{route('investigations.edit',$investigation->id)}}">Edit</a>
+                                                  <a class="btn btn-primary" href="{{route('investigations.edit',$investigation->id)}}"><i class="bi bi-pen"></i></a>
                                             
                                                   @csrf
                                                   @method('DELETE')
                                             
-                                                  <button type="submit" class="btn btn-danger">Delete</button>
+                                                  <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                            
                                               </form>
 

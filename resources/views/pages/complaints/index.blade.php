@@ -88,24 +88,24 @@ Complaints
                                         </td>
                                         <td>
 
-                                            <form class="form form-vertical" action="{{ route('complaints.update',$complaint->id) }}" method="post">
+                                            {{-- <form class="form form-vertical" action="{{ route('complaints.update',$complaint->id) }}" method="post">
                                                 @method('put')
                                                 @csrf
                                             <input type="hidden" value="1" name="status">
                                             <button type="submit" class="btn btn-danger">Accepted</button>
-                                            </form>
+                                            </form> --}}
 
                                             <form class="my-2" action="{{ route('complaints.destroy',$complaint->id) }}" method="POST">
                                             
-                                                  <a class="btn btn-success" href="{{ route('complaints.show',$complaint->id) }}">Show</a>
+                                                  <a class="btn btn-success" href="{{ route('complaints.show',$complaint->id) }}"><i class="bi bi-display"></i></a>
                                             
                                               
-                                                  <a class="btn btn-primary" href="{{route('complaints.edit',$complaint->id)}}">Edit</a>
+                                                  <a class="btn btn-primary" href="{{route('complaints.edit',$complaint->id)}}"><i class="bi bi-pen"></i></a>
                                             
                                                   @csrf
                                                   @method('DELETE')
                                             
-                                                  <button type="submit" class="btn btn-danger">Delete</button>
+                                                  <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                            
                                               </form>
 

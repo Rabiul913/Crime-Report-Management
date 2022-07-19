@@ -27,10 +27,7 @@ Edit District
                                     <div class="card-body">
                                         <form class="form form-vertical" action="{{ route('districts.update',$district->id) }}" method="post">
                                             @method('put')
-<<<<<<< HEAD
                                     
-=======
->>>>>>> 92edfc350866cb952fc84bc8e0a34813828aa8ea
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row ps-3">

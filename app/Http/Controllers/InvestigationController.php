@@ -103,7 +103,7 @@ class InvestigationController extends Controller
      */
     public function show(Investigation $investigation)
     {
-        //
+        return view('pages.investigations.view',compact('investigation'));
     }
 
     /**

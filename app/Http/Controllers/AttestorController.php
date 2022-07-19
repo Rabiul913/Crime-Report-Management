@@ -26,7 +26,7 @@ class AttestorController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.attestors.create');
     }
 
     /**
@@ -37,7 +37,20 @@ class AttestorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+            'father_name'=> 'required', 
+            'mobile'=> 'required', 
+            'address'=> 'required', 
+           
+        ]);
+
+        $input = $request->all();   
+
+        Attestor::create($input);
+     
+         return redirect()->route('attestors.index')
+                        ->with('success','Attestors created successfully.');
     }
 
     /**
@@ -46,9 +59,9 @@ class AttestorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Attestor $attestor)
     {
-        //
+        return view('pages.attestors.view',compact('attestor'));
     }
 
     /**
@@ -57,9 +70,9 @@ class AttestorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Attestor $attestor)
     {
-        //
+        return view('pages.attestors.edit',compact('attestor'));
     }
 
     /**
@@ -69,9 +82,20 @@ class AttestorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Attestor $attestor)
     {
-        //
+        request()->validate([
+            'name'=> 'required',
+            'father_name'=> 'required', 
+            'mobile'=> 'required', 
+            'address'=> 'required',
+            'status' => 'required',
+        ]);
+    
+        $district->update($request->all());
+    
+        return redirect()->route('attestors.index')
+                        ->with('success','Attestors updated successfully');
     }
 
     /**

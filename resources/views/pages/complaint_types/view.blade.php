@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Users Details
+Complaint Types Details
 @endsection
 @section('content')
 
@@ -9,19 +9,17 @@ Users Details
                         <div class="card-body">  
                             <table class="table table-striped">  
                                 <tbody>
-                               
                                     <tr>
                                         <th>Name </th>
                                         <th>:</th>
-                                        <td>{{$user['name']}}</td>
+                                        <td>{{$complaint_type['name']}}</td>
                                     </tr>
                                     
                                     <tr>        
-                                            <th>Email </th>
+                                            <th>Status </th>
                                             <th>:</th>
-                                            <td>{{$user['email']}}</td>
-                                    </tr> 
-                                                                   
+                                            <td>{{$complaint_type['status']}}</td>
+                                    </tr>                                    
                                 </tbody>
                             </table>
                         </div>

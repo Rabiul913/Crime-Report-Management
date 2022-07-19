@@ -16,10 +16,10 @@ class DistrictController extends Controller
     public function index()
     {
  
-        // $districts=District::latest()->get();
+        $districts=District::latest()->get();
         
-        // return view('pages.districts.index',compact('districts'))
-        // ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('pages.districts.index',compact('districts'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -61,9 +61,10 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(District $district)
     {
-        //
+        return view('pages.districts.view',compact('district'));
+        
     }
 
     /**
