@@ -21,6 +21,7 @@ class Complaint extends Model
             'co_against_name',
             'district_id',
             'police_station_id',
+            'police_name',
             'co_against_address',
             'co_type_id',
             'detail',
