@@ -212,11 +212,16 @@ class ComplaintController extends Controller
         // $user_id=Auth::user()->id;
         // dd($user_id);
         $user = User::find(Auth::user()->id);
-
-        // dd($user);
+        $investigator= DB::table("users")->join("model_has_roles","users.id","=","model_has_roles.model_id")
+        ->join("roles","roles.id","=","model_has_roles.role_id")
+        ->where("roles.name","Police Investigation Officer")
+        ->select("users.name")
+        ->get();
+        
+        // dd($investigator);
         $districts=District::latest()->get();
         $types=Complaint_type::latest()->get();
-        return view('pages.complaints.edit', compact('user','districts','types','complaint'));
+        return view('pages.complaints.edit', compact('user','districts','types','complaint','investigator'));
     }
 
     /**

@@ -32,10 +32,14 @@ Create Complaint
                                                 <div class="row ps-3">
                                                     <div class="col-12">
                                                         <div class="form-group has-icon-left">
-                                                            <label>Investigate Officer Name:</label>
+                                                            <label>Investigate Officer Name: <span style="color:red;">*</span></label>
                                                             <div class="position-relative">
-                                                            <select class="form-control" name="user_id" id="user_id" readonly="readonly">
-                                                                <option value="{{ $user->id }}" @if($user->id == $complaint->user_id) selected='true' @endif>{{ $user->name }}</option>
+                                                            <select class="form-control" name="police_name" id="police_name">
+                                                                <option value="0">----Select One----</option>
+                                                                @foreach($investigator as $inves)
+                                                                <option value="{{ $inves->name }}" >{{ $inves->name }}</option>
+                                                                @endforeach
+
                                                             </select>
                                                                 <div class="form-control-icon">
                                                                     <i class="bi bi-person"></i>
